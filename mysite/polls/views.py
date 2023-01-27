@@ -39,6 +39,8 @@ from django.utils import timezone
 #     question = get_object_or_404(Question, pk=question_id)
 #     return render(request, 'polls/results.html', {'question': question})
 #
+def hellow(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'

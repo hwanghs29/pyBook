@@ -1,22 +1,36 @@
-
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style1.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'polls/bootstrap.min.css' %}">
+<div class="container my-3">
+    <p> 각 질문을 클릭하여 응답해 주시기 바랍니다. </p>
+    <p></p>
+<table class="table">
+  <thead>
+  <tr class="table-primary">
+      <th> 번호 </th>
+      <th> 질문 </th>
+  </tr>
+  </thead>
+  <tbody>
+  {% if latest_question_list %}
+  {% for question in latest_question_list %}
+
+    <tr class="table-active">
+        <td> {{ forloop.counter }}</td>
+        <td> <a href="{% url 'polls:detail'  question.id  %}"> {{ question.question_text }} </a>
+        </td>
+    </tr>
+    <tr>
+      ...
+    </tr>
+   {% endfor %}
+   {% else %}
+    <tr>
+    <td colspan="2">  No polls are available</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
 
 
-{% if latest_question_list %}
 
-
-    <ul>
-        {% for question in latest_question_list %}
-<!--            <li><a href="/polls/{{ question.id }}/"> {{ question.question_text }} </a></li>-->
-<!--            <li><a href="{ % url 'detail' question.id "> {{ question.question_text }} </a></li>-->
-        <li><a href="{% url 'polls:detail'  question.id  %}"> {{ question.question_text }} </a></li>
-
-        {% endfor %}
-    </ul>
-
-
-{% else %}
-    <p> No polls are available</p>
-
-{% endif %}
+</div>
