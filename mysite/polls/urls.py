@@ -25,6 +25,8 @@ urlpatterns = [
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     # ex: /polls/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
-
+    path('add/', views.pollcreateform, name='createmodelform'),
+    path('add1/', views.pollcreateform, name='add1'),
+    path('add2/', views.PollCreateView.as_view(), name='add2')
 
 ]
